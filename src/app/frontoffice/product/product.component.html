@@ -1,0 +1,22 @@
+<div class="product">
+  <div class="product-meta">
+    <p><i class="pi pi-tag"></i> {{ product.category }}</p>
+    <p>{{ product.inventoryStatus }}</p>
+  </div>
+
+  <div class="product-name">
+    <p>{{ product.name }}</p>
+    <p>{{ product.description }}</p>
+  </div>
+
+  <div class="product-rating">
+    <p-rating [(ngModel)]="product.rating"
+              [readonly]="true"
+              [cancel]="false"></p-rating>
+  </div>
+
+  <div class="product-add-to-cart">
+    <p>{{ product.price | currency }}</p>
+    <button pButton type="button" icon="pi pi-shopping-cart" iconPos="left"></button>
+  </div>
+</div>

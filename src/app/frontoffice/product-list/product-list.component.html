@@ -1,0 +1,48 @@
+<p-dataView [value]="products"
+            [paginator]="true"
+            [rows]="10"
+            [sortField]="sortField"
+            [sortOrder]="sortOrder"
+            #dv
+            filterBy="name"
+            class="product-list-container">
+
+  <ng-template pTemplate="header">
+    <p-dropdown [options]="sortOptions"
+                [(ngModel)]="sortKey"
+                placeholder="Sort By"
+                (onChange)="onSortChange($event)"
+                [style]="{'min-width':'15em'}"></p-dropdown>
+    <input type="search"
+           pInputText
+           placeholder="Search"
+           (input)="dv.filter($event.target.toString(), 'contains')">
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </ng-template>
+
+  <ng-template let-product pTemplate="gridItem">
+    <div class="p-col-4 p-lg-4 p-md-6 p-sm-12">
+      <app-product [product]="product"></app-product>
+    </div>
+  </ng-template>
+
+  <ng-template let-product pTemplate="listItem">
+    <div class="p-col-12">
+      <app-product [product]="product"></app-product>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </ng-template>
+
+  <ng-template pTemplate="paginatorleft" let-state>
+    {{state.first}}
+    <button type="button" pButton icon="pi-refresh"></button>
+  </ng-template>
+
+  <ng-template pTemplate="paginatorright">
+    <button type="button" pButton icon="pi-cloud-upload"></button>
+  </ng-template>
+
+</p-dataView>

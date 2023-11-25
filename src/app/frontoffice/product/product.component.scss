@@ -1,0 +1,26 @@
+.product
+{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.product
+{
+  p
+  {
+    margin: 5px;
+  }
+}
+
+.product
+{
+  .product-name,
+  .product-rating,
+  .product-meta
+  {
+    margin-bottom: 15px;
+  }
+}
