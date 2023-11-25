@@ -1,6 +1,7 @@
 <p-dataView [value]="products"
             [paginator]="true"
             [rows]="10"
+            [rowsPerPageOptions]="['10', '25', '50']"
             [sortField]="sortField"
             [sortOrder]="sortOrder"
             #dv
@@ -16,8 +17,8 @@
     <input type="search"
            pInputText
            placeholder="Search"
-           (input)="dv.filter($event.target.toString(), 'contains')">
-    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+           (input)="dv.filter($any($event.target).value, 'contains')">
+    <p-dataViewLayoutOptions class="header-list-layout"></p-dataViewLayoutOptions>
   </ng-template>
 
   <ng-template let-product pTemplate="gridItem">
@@ -32,17 +33,14 @@
     </div>
   </ng-template>
 
-  <ng-template pTemplate="footer">
-    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-  </ng-template>
-
   <ng-template pTemplate="paginatorleft" let-state>
-    {{state.first}}
-    <button type="button" pButton icon="pi-refresh"></button>
+    Showing {{state.first + +1}} to {{state.first + state.rows}} of {{state.totalRecords}}
   </ng-template>
 
   <ng-template pTemplate="paginatorright">
-    <button type="button" pButton icon="pi-cloud-upload"></button>
+    <ng-template let-item pTemplate="paginatordropdownitem" class="test">
+      {{item.value}} per page
+    </ng-template>
   </ng-template>
 
 </p-dataView>

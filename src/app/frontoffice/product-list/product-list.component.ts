@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../product/product.service';
 import {Product} from '../product/product.model';
 import {SelectItem} from 'primeng/api';
+import {PaginatorModule} from 'primeng/paginator';
 
 @Component({
   selector: 'app-product-list',
@@ -21,9 +22,11 @@ export class ProductListComponent implements OnInit {
     this.products = this.productService.getAllProducts();
 
     this.sortOptions = [
-      {label: 'Newest First', value: '!year'},
-      {label: 'Oldest First', value: 'year'},
-      {label: 'Brand', value: 'brand'}
+      {label: 'Instock first', value: 'inventoryStatus'},
+      {label: 'Outstock first', value: '!inventoryStatus'},
+      {label: 'A - Z', value: 'name'},
+      {label: 'Z - A', value: '!name'},
+      {label: 'Price', value: 'price'}
     ];
 
     // this.productService.getAllProducts().then(products => this.products = products);

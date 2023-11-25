@@ -14,7 +14,10 @@ import { filter, map, startWith, tap } from 'rxjs';
 export class BreadcrumbComponent implements OnInit {
 
   @Input() public lang = 'en';
-  public items: MenuItem[] = [];
+  public items: MenuItem[] = [
+    {label: 'Products'},
+    {label: 'Admin'},
+  ];
   private readonly sidenavItems: SidenavItem[] = SIDENAV_ITEMS;
   private homeItem: MenuItem = { label: 'Home', routerLink: '/' };
 
@@ -38,6 +41,7 @@ export class BreadcrumbComponent implements OnInit {
 
   private buildBreadcrumb(path: string): void {
     const firstPath: SidenavItem = this.sidenavItems.find(item => '/' + item.id === path);
+
     if (firstPath) {
       this.items.push({
         label: firstPath.labels[this.lang],
@@ -46,5 +50,4 @@ export class BreadcrumbComponent implements OnInit {
       });
     }
   }
-
 }

@@ -6,7 +6,7 @@ import {HomeComponent} from './frontoffice/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product-list', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
   { path: 'admin', component: AdminComponent },
 ];
 
