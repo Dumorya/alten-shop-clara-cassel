@@ -24,3 +24,10 @@
     margin-bottom: 15px;
   }
 }
+
+.product.list-layout
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

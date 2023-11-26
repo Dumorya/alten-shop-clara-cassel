@@ -435,8 +435,8 @@ app-footer {
 /* CONTAINER */
 .container
 {
-  width: calc(60% - 260px);
-  margin-left: calc(20% + 260px);
+  width: calc(100% - 260px);
+  margin-left: 260px;
   margin-top: 100px;
   display: block;
 }

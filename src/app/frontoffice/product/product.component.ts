@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from './product.model';
 
+type LayoutType = 'list'|'grid';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -8,6 +10,7 @@ import {Product} from './product.model';
 })
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
+  @Input() layoutType!: LayoutType;
 
   constructor() {}
 

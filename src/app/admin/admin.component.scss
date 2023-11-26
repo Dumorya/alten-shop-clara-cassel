@@ -1,0 +1,27 @@
+.card
+{
+  max-width: 100%;
+}
+
+.admin-container
+{
+  width: auto;
+  display: block;
+}
+
+td .p-button.p-button-success
+{
+  color: var(--primary-color);
+  background: transparent;
+}
+
+td .p-button.p-button-warning
+{
+  color: var(--error-color);
+  background: transparent;
+}
+
+.card tr:nth-child(odd)
+{
+  background-color: var(--secondary-bg-color);
+}

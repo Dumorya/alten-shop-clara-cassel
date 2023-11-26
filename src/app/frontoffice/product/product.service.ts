@@ -1,34 +1,31 @@
 import { Injectable } from '@angular/core';
 import {Product} from './product.model';
 import productData from '../../../assets/products.json';
+import {HttpClient} from '@angular/common/http';
+import {map, Observable} from 'rxjs';
+
+interface ProductJson {
+  data: Product[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  // @ts-ignore
-  // constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient ) { }
 
-  productDataString: string = JSON.stringify(productData.data);
-  products: Product[] = JSON.parse(this.productDataString);
+  // productDataString: string = JSON.stringify(productData.data);
+  // products: Product[] = JSON.parse(this.productDataString);
 
-  getAllProducts(): Product[] {
-    // return this.http.get(productData)
-    //   .toPromise()
-    //   .then(res => res.json().data as Product[])
-    //   .then(data => data);
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get('../../../assets/products.json').pipe(
+      // convert json object to product
+      map((data: ProductJson) => {
+        return data.data;
+      })
+    );
 
-    return this.products;
+    // return this.products;
   }
-
-  // getProductById(id: number): Product {
-  //   const currentProduct = this.products.find(product => product.id === id);
-  //
-  //   if (currentProduct) {
-  //     return currentProduct;
-  //   } else {
-  //     throw new Error('Product not found!');
-  //   }
-  // }
 }

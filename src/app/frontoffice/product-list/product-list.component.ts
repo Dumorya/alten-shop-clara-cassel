@@ -19,7 +19,10 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getAllProducts();
+
+    this.productService.getAllProducts().subscribe((products) => {
+      this.products = products;
+    });
 
     this.sortOptions = [
       {label: 'Instock first', value: 'inventoryStatus'},
@@ -29,7 +32,6 @@ export class ProductListComponent implements OnInit {
       {label: 'Price', value: 'price'}
     ];
 
-    // this.productService.getAllProducts().then(products => this.products = products);
   }
 
   onSortChange(event) {

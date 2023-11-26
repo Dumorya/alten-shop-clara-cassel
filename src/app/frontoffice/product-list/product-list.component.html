@@ -23,18 +23,18 @@
 
   <ng-template let-product pTemplate="gridItem">
     <div class="p-col-4 p-lg-4 p-md-6 p-sm-12">
-      <app-product [product]="product"></app-product>
+      <app-product [product]="product" [layoutType]="'grid'"></app-product>
     </div>
   </ng-template>
 
   <ng-template let-product pTemplate="listItem">
     <div class="p-col-12">
-      <app-product [product]="product"></app-product>
+      <app-product [product]="product" [layoutType]="'list'"></app-product>
     </div>
   </ng-template>
 
   <ng-template pTemplate="paginatorleft" let-state>
-    Showing {{state.first + +1}} to {{state.first + state.rows}} of {{state.totalRecords}}
+    Showing {{state.first + +1}} to {{((state.first + +state.rows) > state.totalRecords ? state.totalRecords : state.first + +state.rows)}} of {{state.totalRecords}}
   </ng-template>
 
   <ng-template pTemplate="paginatorright">
