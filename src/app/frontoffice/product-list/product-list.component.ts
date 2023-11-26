@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../product/product.service';
 import {Product} from '../product/product.model';
 import {SelectItem} from 'primeng/api';
-import {PaginatorModule} from 'primeng/paginator';
 
 @Component({
   selector: 'app-product-list',
